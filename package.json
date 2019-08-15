@@ -1,0 +1,28 @@
+{
+    "name": "openwhisk-eventhub",
+    "version": "0.0.1",
+    "description": "Event listener for IBP to be deployed on Openwhisk",
+    "main": "dist/index.js",
+    "engines": {
+        "node": ">=8",
+        "npm": ">=5"
+    },
+    "scripts": {
+        "build": "tsc",
+        "test-invoke": "ts-node test.js",
+        "deploy": "./scripts/deploy.sh"
+    },
+    "engineStrict": true,
+    "author": "IBM",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "fabric-network": "^1.4.2",
+        "redis": "^2.8.0"
+    },
+    "devDependencies": {
+        "@types/node": "^10.12.10",
+        "ts-node": "^7.0.1",
+        "tslint": "^5.11.0",
+        "typescript": "^3.5.1"
+    }
+}
