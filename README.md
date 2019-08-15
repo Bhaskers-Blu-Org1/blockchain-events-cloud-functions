@@ -88,12 +88,3 @@ Before completing the invocation, the `endBlock` status [is updated](https://git
 ### compiling NPM dependencies for cloud functions
 
 The `fabric-network` NPM module uses native Node.js module dependencies like GPRC. These dependencies need to be compiled for the platform runtime, rather than the development machine. [There's a script](https://github.ibm.com/ash/openwhisk-eventhub/blob/master/scripts/deploy.sh) which automatically handles compiling the production dependencies using Docker and creating the `blockchain` action.
-
-## issues
-
-Here are some challenges we encountered building the sample….
-
-- **Can we provide a cloud functions trigger feed for blockchain events?** Processing blockchain events seems like the perfect fit for Cloud Functions. Using the alarm trigger feed needs use to store application state in an external database and makes the solution more complex.
-- **Can the Node.js Fabric SDK have a method for retrieving previous blockchain events explicitly?** It was not easy to work out how to get all the previous blockchain events. The solution we've worked out is a bit hacky. I want a normal (async) method which will return all the events as an array between start and end block numbers. 
-- **IBM Blockchain Platform is not IAM-enabled?** Handling manual credentials for services in Cloud Functions is a pain, especially given the large & complex JSON files used by the Blockchain platform. I'd hope to see some magic IAM integration so we can use the service key Cloud Functions now supports to do away with all the manual configuration files….
-- **Pre-install NPM module in Cloud Functions runtimes?** As the Fabric SDK uses native modules, getting them compiled for the correct architecture can be tricky for users. This could be provided in the runtime?
